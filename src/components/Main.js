@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SwapPawthForGrumpy from './SwapPawthForGrumpy'
 import SwapGrumpyForPawth from './SwapGrumpyForPawth'
+import "./App.css"
 
 class Main extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Main extends Component {
 
   render() {
     let content
-    if(this.state.currentForm === 'buy') {
+    if (this.state.currentForm === 'buy') {
       content = <SwapGrumpyForPawth
         grumpyPawthSwapBalance={this.props.grumpyPawthSwapBalance}
         pawthBalance={this.props.pawthBalance}
@@ -29,7 +30,7 @@ class Main extends Component {
     }
 
     return (
-      <div id="content" className="mt-3">
+      <div id="content" className="mt-3 fullscreen">
         
         <div className="d-flex justify-content-center mb-3">
           GrumpyPathSwap Pawth Balance: { this.props.grumpyPawthSwapBalance }
@@ -37,7 +38,7 @@ class Main extends Component {
 
         <div className="d-flex justify-content-between mb-3">
           <button
-              className="btn btn-light"
+              className="btn btn-light pawth_color_2 rounded"
               onClick={(event) => {
                 this.setState({ currentForm: 'sell' })
               }}
@@ -46,7 +47,7 @@ class Main extends Component {
           </button>
           <span className="text-muted">&lt; &nbsp; &gt;</span>
           <button
-              className="btn btn-light"
+              className="btn btn-light pawth_color_2 rounded"
               onClick={(event) => {
                 this.setState({ currentForm: 'buy' })
               }}
@@ -55,7 +56,7 @@ class Main extends Component {
           </button>
         </div>
 
-        <div className="card mb-4" >
+        <div className="card mb-4 rounded" >
 
           <div className="card-body">
 

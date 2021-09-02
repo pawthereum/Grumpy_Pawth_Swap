@@ -1,1 +1,56 @@
-/* Styles go here */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+.pawth_color {
+  background-color: #ff65b3;
+  color: black;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  background-image: url('../bg.svg');
+  background-size: cover;
+  font-family: 'Comfortaa', cursive;
+}
+
+.fullscreen {
+  min-height: 100vh;
+}
+
+.pawth_color_2 {
+  background-color: #ff349b;
+  color: white;
+  font-weight: bold;
+}
+
+.pawth_color_2:hover {
+  background-color: #ff65b3;
+  color: black;
+  font-weight: bold;
+}
+
+.pawth_color_3 {
+  /* background-color: #ffbdde; */
+  color: black;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.black_font {
+  color: black;
+  font-size: 14px;
+}
+
+.no_margin {
+  margin: 0 !important;
+  padding: 30px;
+}
+
+.rounded {
+  border-radius: 24px !important;
+}

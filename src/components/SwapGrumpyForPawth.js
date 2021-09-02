@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import grumpyLogo from '../grumpy-logo.png'
-import ethLogo from '../eth-logo.png'
+import pawthLogo from '../Pawth_logo.png'
+import "./App.css"
 
 class SwapGrumpyForPawth extends Component {
   constructor(props) {
@@ -16,13 +17,13 @@ class SwapGrumpyForPawth extends Component {
           event.preventDefault()
           let pawthAmount
           pawthAmount = this.input.value.toString()
-          pawthAmount = window.web3.utils.toWei(pawthAmount, 'Ether')
+          pawthAmount = window.web3.utils.toWei(pawthAmount, 'shannon')
           this.props.swapGrumpyForPawth(pawthAmount)
         }}>
         <div>
-          <label className="float-left"><b>Input</b></label>
+          <label className="float-left paw"><b>Input</b></label>
           <span className="float-right text-muted">
-            Balance: {window.web3.utils.fromWei(this.props.grumpyBalance, 'Ether')}
+            Balance: {window.web3.utils.fromWei(this.props.grumpyBalance, 'shannon')}
           </span>
         </div>
         <div className="input-group mb-4">
@@ -48,7 +49,7 @@ class SwapGrumpyForPawth extends Component {
         <div>
           <label className="float-left"><b>Output</b></label>
           <span className="float-right text-muted">
-            Balance: {window.web3.utils.fromWei(this.props.pawthBalance, 'Ether')}
+            Balance: {window.web3.utils.fromWei(this.props.pawthBalance, 'shannon')}
           </span>
         </div>
         <div className="input-group mb-2">
@@ -61,7 +62,7 @@ class SwapGrumpyForPawth extends Component {
           />
           <div className="input-group-append">
             <div className="input-group-text">
-              <img src={ethLogo} height='32' alt=""/>
+              <img src={pawthLogo} height='32' alt=""/>
               &nbsp;&nbsp;&nbsp; PAWTH
             </div>
           </div>
@@ -70,7 +71,7 @@ class SwapGrumpyForPawth extends Component {
           <span className="float-left text-muted">Exchange Rate</span>
           <span className="float-right text-muted">100k GRUMPY = 1 PAWTH</span>
         </div>
-        <button type="submit" className="btn btn-primary btn-block btn-lg">SWAP!</button>
+        <button type="submit" className="btn pawth_color_2 btn-block btn-lg">SWAP!</button>
       </form>
     );
   }

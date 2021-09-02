@@ -20,6 +20,6 @@ module.exports = async function(deployer) {
   // Transfer all pawth to GrumpyPathSwap (1 billion)
   await pawth.transfer(grumpyPawthSwap.address, '1000000000000000000000000000')
 
-  // Transfer 100 billion grupy to user who deployed the contract
+  // Transfer 100 trillion grupy to user who deployed the contract
   await grumpy.transfer(accounts[0], '100000000000000000000000000000')
 };
