@@ -41,8 +41,9 @@ class SwapGrumpyForPawth extends Component {
             type="text"
             onChange={(event) => {
               const grumpyAmount = this.input.value.toString()
+              const grumpyToSwapString = grumpyAmount ? window.web3.utils.toWei(grumpyAmount, 'shannon') : '0'
               this.setState({
-                grumpyToSwap: (grumpyAmount*10**9).toString(),
+                grumpyToSwap: grumpyToSwapString,
                 output: grumpyAmount / 100000
               })
             }}

@@ -27,6 +27,7 @@ class App extends Component {
     }
 
     const web3 = window.web3
+    // this.setState({ web3: web3 })
 
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
@@ -113,6 +114,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      web3: null,
       account: null,
       grumpy: {},
       grumpyAddress: '',
@@ -132,6 +134,7 @@ class App extends Component {
   render() {
     let content
     content = <Main
+      web3={this.state.web3}
       grumpyPawthSwapBalance={this.state.grumpyPawthSwapBalance}
       pawthBalance={this.state.pawthBalance}
       grumpyBalance={this.state.grumpyBalance}
@@ -163,7 +166,7 @@ class App extends Component {
                   onClick={this.disconnect.bind(this)}
                   style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
-                  <span class="pt-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <span className="pt-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {this.state.account.slice(0,6) + '...' + this.state.account.substring(this.state.account.length - 4)}
                   </span>
       
@@ -214,7 +217,7 @@ class App extends Component {
           </div>
          
         </div>
-        <nav class="navbar fixed-bottom navbar-light bg-light">
+        <nav className="navbar fixed-bottom navbar-light bg-light">
           <div className="container">
             <div className="row">
               <div className="col-sm-6">

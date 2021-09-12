@@ -22,6 +22,7 @@ class Main extends Component {
     if(this.state.currentForm === 'buy') {
       content = <SwapGrumpyForPawth
         account={this.props.account}
+        web3={this.props.web3}
         grumpyPawthSwapBalance={this.props.grumpyPawthSwapBalance}
         pawthBalance={this.props.pawthBalance}
         grumpyBalance={this.props.grumpyBalance}
@@ -30,6 +31,7 @@ class Main extends Component {
     } else {
       content = <SwapPawthForGrumpy
         account={this.props.account}
+        web3={this.props.web3}
         grumpyPawthSwapBalance={this.props.grumpyPawthSwapBalance}
         pawthBalance={this.props.pawthBalance}
         grumpyBalance={this.props.grumpyBalance}
