@@ -66329,122 +66329,14 @@
   },
   "networks": {
     "4": {
-      "events": {
-        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "owner",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "spender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Approval",
-          "type": "event"
-        },
-        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "previousOwner",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "newOwner",
-              "type": "address"
-            }
-          ],
-          "name": "OwnershipTransferred",
-          "type": "event"
-        },
-        "0x17bbfb9a6069321b6ded73bd96327c9e6b7212a5cd51ff219cd61370acafb561": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "tokensSwapped",
-              "type": "uint256"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "ethReceived",
-              "type": "uint256"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "tokensIntoLiqudity",
-              "type": "uint256"
-            }
-          ],
-          "name": "SwapAndLiquify",
-          "type": "event"
-        },
-        "0x53726dfcaf90650aa7eb35524f4d3220f07413c8d6cb404cc8c18bf5591bc159": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "bool",
-              "name": "enabled",
-              "type": "bool"
-            }
-          ],
-          "name": "SwapAndLiquifyEnabledUpdated",
-          "type": "event"
-        },
-        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "from",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "to",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Transfer",
-          "type": "event"
-        }
-      },
+      "events": {},
       "links": {},
-      "address": "0x829e64B0A6E15B009F13fa78E40E963111e1EB63",
-      "transactionHash": "0xf6dba00979b10ebcbc408e68011fec237c676fc6c5999ab08c773e620a57fa63"
+      "address": "0xfBB8d6d0E39fc20902DeC5c96935ffC3f99bCd0F",
+      "transactionHash": "0x6f2343c6ed46c5d1bae0224c6de84760c7b254e6aa54b01f4add5ad75c932713"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-09-12T01:30:43.371Z",
+  "updatedAt": "2021-09-12T14:14:42.878Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
