@@ -66328,15 +66328,15 @@
     "version": "0.6.12+commit.27d51765.Emscripten.clang"
   },
   "networks": {
-    "5777": {
+    "4": {
       "events": {},
       "links": {},
-      "address": "0x5a13E61B39f3991A6Fa8f74fA8071fC0F07f1fF2",
-      "transactionHash": "0xdcbe2b5f175dbb4d4e9b2f1b7e398dcb7cc565b5d1c916214ec35b29fac6a3fc"
+      "address": "0x9b6136b70c3d42e8cB5D3175ADd9E6b022927c73",
+      "transactionHash": "0x79fc9924dfc7fc5b974a7d33bb30ac97ca6dbd98f76f292b43b39f33156d01fb"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-09-12T14:37:41.222Z",
+  "updatedAt": "2021-09-12T14:50:46.431Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
