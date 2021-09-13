@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "f91df060f7ddc692c1f5",
-    "url": "/Grumpy_Pawth_Swap/static/css/main.60b048db.chunk.css"
+    "revision": "a57336dccbe749d35388",
+    "url": "/Grumpy_Pawth_Swap/static/css/main.4172c4d8.chunk.css"
   },
   {
-    "revision": "f91df060f7ddc692c1f5",
-    "url": "/Grumpy_Pawth_Swap/static/js/main.f91df060.chunk.js"
+    "revision": "a57336dccbe749d35388",
+    "url": "/Grumpy_Pawth_Swap/static/js/main.a57336dc.chunk.js"
   },
   {
-    "revision": "9b898b3ec6bbfe6de268",
-    "url": "/Grumpy_Pawth_Swap/static/css/1.0cb71fa0.chunk.css"
+    "revision": "5b1b382982ef39408049",
+    "url": "/Grumpy_Pawth_Swap/static/css/1.e789c5bf.chunk.css"
   },
   {
-    "revision": "9b898b3ec6bbfe6de268",
-    "url": "/Grumpy_Pawth_Swap/static/js/1.9b898b3e.chunk.js"
+    "revision": "5b1b382982ef39408049",
+    "url": "/Grumpy_Pawth_Swap/static/js/1.5b1b3829.chunk.js"
   },
   {
     "revision": "21646ae516c5a323a49a",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/Grumpy_Pawth_Swap/static/media/pawth-horizontal.64883862.png"
   },
   {
-    "revision": "51dea92c2c97103d9898d6518c0a510d",
+    "revision": "29f57075fb3b6a24214bc21b7f26fa53",
     "url": "/Grumpy_Pawth_Swap/index.html"
   }
 ];
