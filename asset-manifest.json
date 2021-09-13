@@ -1,7 +1,7 @@
 {
-  "main.css": "/Grumpy_Pawth_Swap/static/css/main.4172c4d8.chunk.css",
-  "main.js": "/Grumpy_Pawth_Swap/static/js/main.a57336dc.chunk.js",
-  "main.js.map": "/Grumpy_Pawth_Swap/static/js/main.a57336dc.chunk.js.map",
+  "main.css": "/Grumpy_Pawth_Swap/static/css/main.bb27919a.chunk.css",
+  "main.js": "/Grumpy_Pawth_Swap/static/js/main.cfd2720e.chunk.js",
+  "main.js.map": "/Grumpy_Pawth_Swap/static/js/main.cfd2720e.chunk.js.map",
   "static/css/1.e789c5bf.chunk.css": "/Grumpy_Pawth_Swap/static/css/1.e789c5bf.chunk.css",
   "static/js/1.5b1b3829.chunk.js": "/Grumpy_Pawth_Swap/static/js/1.5b1b3829.chunk.js",
   "static/js/1.5b1b3829.chunk.js.map": "/Grumpy_Pawth_Swap/static/js/1.5b1b3829.chunk.js.map",
@@ -10,9 +10,9 @@
   "static/media/grumpy-logo.png": "/Grumpy_Pawth_Swap/static/media/grumpy-logo.9a550b9b.png",
   "static/media/App.css": "/Grumpy_Pawth_Swap/static/media/bg.0d0a4650.svg",
   "static/media/pawth-horizontal.png": "/Grumpy_Pawth_Swap/static/media/pawth-horizontal.64883862.png",
+  "static/css/main.bb27919a.chunk.css.map": "/Grumpy_Pawth_Swap/static/css/main.bb27919a.chunk.css.map",
   "static/css/1.e789c5bf.chunk.css.map": "/Grumpy_Pawth_Swap/static/css/1.e789c5bf.chunk.css.map",
-  "static/css/main.4172c4d8.chunk.css.map": "/Grumpy_Pawth_Swap/static/css/main.4172c4d8.chunk.css.map",
   "index.html": "/Grumpy_Pawth_Swap/index.html",
-  "precache-manifest.2484d42a9aef96c42285ac94be6e169b.js": "/Grumpy_Pawth_Swap/precache-manifest.2484d42a9aef96c42285ac94be6e169b.js",
+  "precache-manifest.5541b53e80b00b7bd44e4e871f782ab8.js": "/Grumpy_Pawth_Swap/precache-manifest.5541b53e80b00b7bd44e4e871f782ab8.js",
   "service-worker.js": "/Grumpy_Pawth_Swap/service-worker.js"
 }
