@@ -30,7 +30,7 @@
     "truffle": "5.0.5",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
     "truffle-plugin-verify": "^0.5.15",
-    "web3": "1.0.0-beta.55"
+    "web3": "^1.2.9"
   },
   "scripts": {
     "start": "react-scripts start",

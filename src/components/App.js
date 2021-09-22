@@ -30,19 +30,19 @@ class App extends Component {
     const web3 = window.web3
 
     const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
-    document.getElementById('avatar').appendChild(Jazzicon(20, parseInt(this.state.account.slice(2, 10), 16)))
-
+    const account = accounts[0]
 
     const networkId =  await web3.eth.net.getId()
 
     // Load Grumpy
+    console.log(networkId)
     const grumpyData = Grumpy.networks[networkId]
+    console.log(grumpyData)
     this.setState({ grumpyAddress: grumpyData.address })
     if(grumpyData) {
       const grumpy = new web3.eth.Contract(Grumpy.abi, grumpyData.address)
       this.setState({ grumpy })
-      let grumpyBalance = await grumpy.methods.balanceOf(this.state.account).call()
+      let grumpyBalance = await grumpy.methods.balanceOf(account).call()
       this.setState({ grumpyBalance: grumpyBalance ? grumpyBalance.toString() : '0' })
     } else {
       window.alert('Grumpy contract not deployed to detected network.')
@@ -54,7 +54,7 @@ class App extends Component {
     if (pawthData) {
       const pawth = new web3.eth.Contract(Pawth.abi, pawthData.address)
       this.setState({ pawth })
-      let pawthBalance = await pawth.methods.balanceOf(this.state.account).call()
+      let pawthBalance = await pawth.methods.balanceOf(account).call()
       this.setState({ pawthBalance: pawthBalance ? pawthBalance.toString() : '0' })
     } else {
       window.alert('Pawth contract not deployed to detected network.')
@@ -72,15 +72,16 @@ class App extends Component {
       window.alert('GrumpyPawthSwap contract not deployed to detected network.')
     }
 
+    this.setState({ account: accounts[0] })
+    document.getElementById('avatar').appendChild(Jazzicon(20, parseInt(this.state.account.slice(2, 10), 16)))
+
     this.setState({ loading: false })
   }
 
   swapPawthForGrumpy = (pawthAmount) => {
     this.setState({ loading: true })
-    this.state.pawth.methods.approve(this.state.grumpyPawthSwap.address, pawthAmount).send({ from: this.state.account }).on('transactionHash', (hash) => {
-      this.state.grumpyPawthSwap.methods.swapPawthForGrumpy(pawthAmount).send({ from: this.state.account }).on('transactionHash', (hash) => {
-        this.setState({ loading: false })
-      })
+    this.state.grumpyPawthSwap.methods.swapPawthForGrumpy(pawthAmount).send({ from: this.state.account }).on('transactionHash', (hash) => {
+      this.setState({ loading: false })
     })
   }
 
@@ -141,6 +142,8 @@ class App extends Component {
       grumpyAddress={this.state.grumpyAddress}
       pawthAddress={this.state.pawthAddress}
       swapAddress={this.state.swapAddress}
+      grumpy={this.state.grumpy}
+      grumpyPawthSwap={this.state.grumpyPawthSwap}
       grumpyPawthSwapBalance={this.state.grumpyPawthSwapBalance}
       pawthBalance={this.state.pawthBalance}
       grumpyBalance={this.state.grumpyBalance}

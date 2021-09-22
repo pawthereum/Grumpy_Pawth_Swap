@@ -5,8 +5,8 @@ const GrumpyPawthSwap = artifacts.require("GrumpyPawthSwap");
 module.exports = async function(deployer) {
 
   // // Deploy Grumpy
-  // await deployer.deploy(Grumpy);
-  // const grumpy = await Grumpy.deployed()
+  await deployer.deploy(Grumpy);
+  const grumpy = await Grumpy.deployed()
 
   // Deploy Pawth
   await deployer.deploy(Pawth);
