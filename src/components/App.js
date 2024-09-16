@@ -30,19 +30,19 @@ class App extends Component {
     const web3 = window.web3
 
     const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
-    document.getElementById('avatar').appendChild(Jazzicon(20, parseInt(this.state.account.slice(2, 10), 16)))
-
+    const account = accounts[0]
 
     const networkId =  await web3.eth.net.getId()
 
     // Load Grumpy
+    console.log(networkId)
     const grumpyData = Grumpy.networks[networkId]
+    console.log(grumpyData)
     this.setState({ grumpyAddress: grumpyData.address })
     if(grumpyData) {
       const grumpy = new web3.eth.Contract(Grumpy.abi, grumpyData.address)
       this.setState({ grumpy })
-      let grumpyBalance = await grumpy.methods.balanceOf(this.state.account).call()
+      let grumpyBalance = await grumpy.methods.balanceOf(account).call()
       this.setState({ grumpyBalance: grumpyBalance ? grumpyBalance.toString() : '0' })
     } else {
       window.alert('Grumpy contract not deployed to detected network.')
@@ -54,7 +54,7 @@ class App extends Component {
     if (pawthData) {
       const pawth = new web3.eth.Contract(Pawth.abi, pawthData.address)
       this.setState({ pawth })
-      let pawthBalance = await pawth.methods.balanceOf(this.state.account).call()
+      let pawthBalance = await pawth.methods.balanceOf(account).call()
       this.setState({ pawthBalance: pawthBalance ? pawthBalance.toString() : '0' })
     } else {
       window.alert('Pawth contract not deployed to detected network.')
@@ -66,11 +66,15 @@ class App extends Component {
       const grumpyPawthSwap = new web3.eth.Contract(GrumpyPawthSwap.abi, grumpyPawthSwapData.address)
       this.setState({ grumpyPawthSwap })
       const pawth = this.state.pawth
-      let grumpyPawthSwapBalance = await pawth.methods.balanceOf(grumpyPawthSwap.address).call()
+      console.log(grumpyPawthSwap)
+      let grumpyPawthSwapBalance = await pawth.methods.balanceOf(grumpyPawthSwap._address).call()
       this.setState({ grumpyPawthSwapBalance: grumpyPawthSwapBalance ? grumpyPawthSwapBalance.toString() : '0' })
     } else {
       window.alert('GrumpyPawthSwap contract not deployed to detected network.')
     }
+
+    this.setState({ account: accounts[0] })
+    document.getElementById('avatar').appendChild(Jazzicon(20, parseInt(this.state.account.slice(2, 10), 16)))
 
     this.setState({ loading: false })
   }
@@ -86,7 +90,7 @@ class App extends Component {
 
   approveGrumpyTransaction = (grumpyAmount) => {
     this.setState({ loading: true })
-    this.state.grumpy.methods.approve(this.state.grumpyPawthSwap.address, grumpyAmount).send({ from: this.state.account }).on('confirmation', (confirmationNumber, receipt) => {
+    this.state.grumpy.methods.approve(this.state.grumpyPawthSwap._address, grumpyAmount).send({ from: this.state.account }).on('confirmation', (confirmationNumber, receipt) => {
       this.setState({ showAdditionalTxBanner: true })
       this.setState({grumpyApproved: true})
       this.setState({loading:false})
@@ -141,6 +145,8 @@ class App extends Component {
       grumpyAddress={this.state.grumpyAddress}
       pawthAddress={this.state.pawthAddress}
       swapAddress={this.state.swapAddress}
+      grumpy={this.state.grumpy}
+      grumpyPawthSwap={this.state.grumpyPawthSwap}
       grumpyPawthSwapBalance={this.state.grumpyPawthSwapBalance}
       pawthBalance={this.state.pawthBalance}
       grumpyBalance={this.state.grumpyBalance}
@@ -163,12 +169,12 @@ class App extends Component {
                 href="https://pawthereum.com/"
                 rel="noopener noreferrer"
               >
-                <img class="d-none d-sm-block" src={pawthLogo} height="24x"></img>
-                <img class="d-block d-sm-none" src={pawthLogoSmall} height="32x"></img>
+                <img className="d-none d-sm-block" src={pawthLogo} height="24x"></img>
+                <img className="d-block d-sm-none" src={pawthLogoSmall} height="32x"></img>
               </a>
             </div>
             <div className="col" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-              <button type="button" class="btn btn-primary rounded mr-2" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" className="btn btn-primary rounded mr-2" data-toggle="modal" data-target="#exampleModal">
                 Instructions
               </button>
               {
@@ -179,7 +185,7 @@ class App extends Component {
                   onClick={this.disconnect.bind(this)}
                   style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
-                  <span class="pt-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <span className="pt-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {this.state.account.slice(0,6) + '...' + this.state.account.substring(this.state.account.length - 4)}
                   </span>
       
@@ -236,27 +242,27 @@ class App extends Component {
 
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Instructions</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Instructions</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <p className="descriptiveFont">If on a mobile wallet (e.g., Metamask, Coinbase Wallet for mobile), visit this website from the browser tab in that wallet. If you have Trust Wallet for iPhone, you will need to swap using etherscan and instructions are at the bottom of this page. Trust Wallet for Android should still support broswers. If on a desktop, you will need to have the browser extension of your wallet installed (e.g., Metamask Chrome Extension). Please watch this tutorial that we made to see the swap process on both desktop and mobile: <a href="https://www.youtube.com/watch?v=FXGmObA1TC8" target="_blank">Click for Tutorial</a></p>
                 <p className="descriptiveFont">If you're using Trust Wallet for iPhone, you can either transfer Grumpy to a wallet that supports Browsers or swap via Etherscan. The tutorial for this is here: <a href="https://youtu.be/ivc-NjNiUOU" target="_blank">Click here for tutorial</a></p>
 
-                <div id="list-example" class="list-group pb-4">
-                  <a class="list-group-item list-group-item-action" href="#list-item-1">Step 1: Connect Wallet</a>
-                  <a class="list-group-item list-group-item-action" href="#list-item-2">Step 2: Input Grumpy Amount</a>
-                  <a class="list-group-item list-group-item-action" href="#list-item-3">Step 3: Approve Grumpy</a>
-                  <a class="list-group-item list-group-item-action" href="#list-item-4">Step 4: Swap for Pawth</a>
-                  <a class="list-group-item list-group-item-action" href="#list-item-5">Step 5: View Pawth in Wallet</a>
+                <div id="list-example" className="list-group pb-4">
+                  <a className="list-group-item list-group-item-action" href="#list-item-1">Step 1: Connect Wallet</a>
+                  <a className="list-group-item list-group-item-action" href="#list-item-2">Step 2: Input Grumpy Amount</a>
+                  <a className="list-group-item list-group-item-action" href="#list-item-3">Step 3: Approve Grumpy</a>
+                  <a className="list-group-item list-group-item-action" href="#list-item-4">Step 4: Swap for Pawth</a>
+                  <a className="list-group-item list-group-item-action" href="#list-item-5">Step 5: View Pawth in Wallet</a>
                 </div>
-                <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+                <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
                   <h4 id="list-item-1">Step 1: Connect Wallet</h4>
                   <p className="descriptiveFont">Click "Connect" in the top right corner. Check to make sure that the wallet address where you're storing your Grumpy appears.</p>
                   <h4 id="list-item-2">Step 2: Input Grumpy Amount</h4>
@@ -270,8 +276,8 @@ class App extends Component {
                 </div>
                 
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn pawth_color_2 rounded" data-dismiss="modal">Close</button>
+              <div className="modal-footer">
+                <button type="button" className="btn pawth_color_2 rounded" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>

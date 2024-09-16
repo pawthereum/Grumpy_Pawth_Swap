@@ -6,8 +6,10 @@ class SwapGrumpyForPawth extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      allowance: '0',
       grumpyToSwap: '0',
-      output: '0'
+      output: '0',
+      grumpyAllowanceApproved: false,
     }
   }
 
@@ -20,13 +22,37 @@ class SwapGrumpyForPawth extends Component {
     })
   }
 
-  handleChange(e) {
-    this.setState({ output: e.target.value.toString() });
+  async componentDidUpdate (prevProps) {
+    if (this.props.grumpyApproved) {
+      this.setState({
+        grumpyAllowanceApproved: this.props.grumpyApproved
+      })
+    }
+    if (this.props.account && this.props.account != prevProps.account) {
+      const allowanceCall = await this.props.grumpy.methods.allowance(this.props.account, this.props.grumpyPawthSwap._address).call()
+      const allowance = allowanceCall.toString()
+      this.setState({ allowance })
+      this.compareAllowanceToOutput()
+    }
+  }
+
+  compareAllowanceToOutput (inputValue) {
+    if (!this.state.output || this.state.output === '0') return
+    const allowanceTruncated = parseFloat(this.state.allowance.substr(0, this.state.allowance.length - 9))
+    if (allowanceTruncated >= parseFloat(inputValue)) {
+      return this.setState({
+        grumpyAllowanceApproved: true
+      })
+    } else {
+      return this.setState({
+        grumpyAllowanceApproved: false
+      })
+    }
   }
 
   render() {
 
-    if (this.props.grumpyApproved === false ) {
+    if (!this.state.grumpyAllowanceApproved) {
       return (
         <form className="mb-3" onSubmit={(event) => {
             event.preventDefault()
@@ -56,7 +82,7 @@ class SwapGrumpyForPawth extends Component {
                 else{
                   this.setState({output: "Please Enter a Number"})
                 }
-
+                this.compareAllowanceToOutput(this.input.value)
               }}
               ref={(input) => { this.input = input }}
               className="form-control form-control-lg"
@@ -112,7 +138,6 @@ class SwapGrumpyForPawth extends Component {
       );
     }
     else {
-      console.log(this.props.grumpyApproved)
       return (
         <form className="mb-3" onSubmit={(event) => {
             event.preventDefault()
@@ -141,6 +166,7 @@ class SwapGrumpyForPawth extends Component {
                 else{
                   this.setState({output: "Please Enter a Number"})
                 }
+                this.compareAllowanceToOutput(this.input.value)
               }}
               ref={(input) => { this.input = input }}
               className="form-control form-control-lg"
